@@ -5,16 +5,18 @@
       <TaskList />
       <router-view/>
     </main>
+    <Loader v-if="$store.state.loading" />
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
 import TaskList from '@/components/Tasks/List'
+import Loader from './components/Loader'
 
 export default {
   name: 'app',
-  components: { Header, TaskList }
+  components: { Loader, Header, TaskList }
 }
 </script>
 
@@ -49,6 +51,7 @@ body {
 
 .main {
   min-width: 760px;
+  position: relative;
   padding: 30px 15px;
 }
 

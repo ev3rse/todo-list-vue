@@ -67,13 +67,22 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    addTask ({ commit }, payload) {
+    async addTask ({ state, commit }, payload) {
+      state.loading = true
       commit('addTask', payload)
       commit('updateSessionStorage')
+
+      await loadingPromise()
+      state.loading = false
     },
-    updateTask ({ commit }, payload) {
+    async updateTask ({ state, commit }, payload) {
+      state.loading = true
+
       commit('updateTask', payload)
       commit('updateSessionStorage')
+
+      await loadingPromise()
+      state.loading = false
     },
     deleteTask ({ commit }, payload) {
       commit('deleteTask', payload)
@@ -84,3 +93,7 @@ export default new Vuex.Store({
     }
   }
 })
+
+async function loadingPromise () {
+  return new Promise((resolve) => setTimeout(() => resolve(), 2000))
+}

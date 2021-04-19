@@ -25,7 +25,7 @@ export default {
   z-index: 9999999;
 
   &__overlay {
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 0;
     right: 0;
